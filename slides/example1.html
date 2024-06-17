@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <button id="presto">Presto...</button>
+  <button id="abra">Abra...</button>
+    
+<script>
+    let prestoButton = document.getElementById("presto")
+    let abraButton = document.getElementById("abra")
+
+    function sayMagicWord(event) {
+        if(event.target === prestoButton){
+            alert("Change-o!")
+        }else if(event.target === abraButton){
+            alert("Cadabra!")
+        }else {
+            alert("Shazam!")
+        }
+        console.log(event.target);
+    }
+
+
+    prestoButton.addEventListener("click",  sayMagicWord)
+    abraButton.addEventListener("click", sayMagicWord)
+
+</script>
+
+
+</body>
+</html>
