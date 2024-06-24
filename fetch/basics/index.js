@@ -70,23 +70,21 @@ function displayIt(info){
 */
 
 
-const url = `https://meowfacts.heroku/`;
+const url = `https://meowfacts.herokuapp.com/`;
 
 async function getCatFact (){
     try{
 
         let response = await fetch(url);
-
+        let json = await response.json();
+        // console.log(json.data[0]);
         if(!response.ok){
             throw new Error("Failed to obtain resource")
         }
-
-        let json = await response.json();
-        // console.log(json.data[0]);
         displayIt(json.data[0])
     }catch(err){
         console.log(err);
-        displayIt("Failed to fetch")
+        displayIt(err)
     }
 }
 
