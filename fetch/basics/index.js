@@ -54,13 +54,40 @@ function displayIt(info){
     body.appendChild(p)
 }
 
-const url = `https://meowfacts.herokuapp.com/`;
+/* 
+
+    ? Error handling
+        keywords
+        - try
+        - catch
+    Syntax:
+    try{
+        ... code block to try
+    } catch(err){
+        ... code block to respond to errors
+    }
+
+*/
+
+
+const url = `https://meowfacts.heroku/`;
 
 async function getCatFact (){
-    let response = await fetch(url);
-    let json = await response.json();
-    // console.log(json.data[0]);
-    displayIt(json.data[0])
+    try{
+
+        let response = await fetch(url);
+
+        if(!response.ok){
+            throw new Error("Failed to obtain resource")
+        }
+
+        let json = await response.json();
+        // console.log(json.data[0]);
+        displayIt(json.data[0])
+    }catch(err){
+        console.log(err);
+        displayIt("Failed to fetch")
+    }
 }
 
 getCatFact();
